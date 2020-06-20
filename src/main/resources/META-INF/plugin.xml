@@ -1,0 +1,72 @@
+<idea-plugin>
+    <id>lv.kristsk.k5z.plugin.intellij</id>
+    <name>K5Z</name>
+    <version>0.1</version>
+    <vendor email="k@pods.lv">K5Z plugin for IntelliJ IDEA</vendor>
+
+    <idea-version since-build="201"/>
+
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <actions>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+
+        <fileType
+                name="K5Z File"
+                implementationClass="lv.kristsk.k5z.plugin.intellij.K5zFileType"
+                fieldName="INSTANCE"
+                language="K5Z"
+                extensions="k5z"/>
+
+        <lang.syntaxHighlighterFactory
+                language="K5Z"
+                implementationClass="lv.kristsk.k5z.plugin.intellij.K5zSyntaxHighlighterFactory"/>
+
+        <lang.parserDefinition
+                language="K5Z"
+                implementationClass="lv.kristsk.k5z.plugin.intellij.K5zParserDefinition"/>
+
+        <lang.ast.factory
+                language="K5Z"
+                implementationClass="lv.kristsk.k5z.plugin.intellij.K5zAstFactory"/>
+
+        <lang.psiStructureViewFactory
+                language="K5Z"
+                implementationClass="lv.kristsk.k5z.plugin.intellij.structview.K5zStructureView"/>
+
+        <lang.braceMatcher
+                language="K5Z"
+                implementationClass="lv.kristsk.k5z.plugin.intellij.K5zBraceMatcher"/>
+
+        <lang.psiStructureViewFactory
+                language="K5Z"
+                implementationClass="lv.kristsk.k5z.plugin.intellij.structview.K5zStructureView"/>
+
+        <lang.foldingBuilder
+                language="K5Z"
+                implementationClass="lv.kristsk.k5z.plugin.intellij.K5zFoldingBuilder"/>
+
+        <gotoSymbolContributor
+                implementation="lv.kristsk.k5z.plugin.intellij.K5zChooseByNameContributor"/>
+
+        <!--        <lang.psiStructureViewFactory language="Sample"-->
+        <!--                                      implementationClass="org.antlr.jetbrains.sample.structview.SampleStructureViewFactory"/>-->
+
+        <!--        <colorSettingsPage implementation="org.antlr.jetbrains.sample.SampleColorSettingsPage"/>-->
+
+        <!--        <externalAnnotator language="Sample" implementationClass="org.antlr.jetbrains.sample.SampleExternalAnnotator"/>-->
+
+        <!--        <lang.findUsagesProvider language="Sample"-->
+        <!--                                 implementationClass="org.antlr.jetbrains.sample.SampleFindUsagesProvider"/>-->
+
+        <sdkType
+                implementation="lv.kristsk.k5z.plugin.intellij.K5zSdkType"/>
+
+        <moduleType
+                id="K5Z_MODULE"
+                implementationClass="lv.kristsk.k5z.plugin.intellij.K5zModuleType"/>
+    </extensions>
+</idea-plugin>

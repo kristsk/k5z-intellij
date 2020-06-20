@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.18'
+    id 'antlr'
+}
+
+wrapper {
+    gradleVersion = '5.2.1'
+}
+
+group 'lv.kristsk.gen5'
+version '0.5'
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+intellij {
+    pluginName 'k5z-intellij-2020'
+    version = '2020.1'
+    plugins 'java'
+    downloadSources = true
+    sameSinceUntilBuild = true
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    antlr('org.antlr:antlr4:4.7.2') { // use ANTLR version 4
+        exclude group: 'com.ibm.icu', module: 'icu4j'
+    }
+    implementation 'org.antlr:antlr4-intellij-adaptor:0.1'
+}
+
+generateGrammarSource {
+    arguments += ['-package', 'lv.kristsk.k5z.plugin.intellij.parser']
+}
+
+runIde {
+    jvmArgs '--add-exports', 'java.base/jdk.internal.vm=ALL-UNNAMED'
+}
+
+buildSearchableOptions {
+    jvmArgs '--add-exports', 'java.base/jdk.internal.vm=ALL-UNNAMED'
+}
