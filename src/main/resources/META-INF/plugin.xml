@@ -41,19 +41,12 @@
                 language="K5Z"
                 implementationClass="lv.kristsk.k5z.plugin.intellij.K5zBraceMatcher"/>
 
-        <lang.psiStructureViewFactory
-                language="K5Z"
-                implementationClass="lv.kristsk.k5z.plugin.intellij.structview.K5zStructureView"/>
-
         <lang.foldingBuilder
                 language="K5Z"
                 implementationClass="lv.kristsk.k5z.plugin.intellij.K5zFoldingBuilder"/>
 
         <gotoSymbolContributor
                 implementation="lv.kristsk.k5z.plugin.intellij.K5zChooseByNameContributor"/>
-
-        <!--        <lang.psiStructureViewFactory language="Sample"-->
-        <!--                                      implementationClass="org.antlr.jetbrains.sample.structview.SampleStructureViewFactory"/>-->
 
         <!--        <colorSettingsPage implementation="org.antlr.jetbrains.sample.SampleColorSettingsPage"/>-->
 

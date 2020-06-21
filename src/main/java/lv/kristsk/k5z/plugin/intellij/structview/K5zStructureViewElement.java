@@ -46,6 +46,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 public class K5zStructureViewElement implements StructureViewTreeElement, SortableTreeElement {
 
@@ -125,7 +126,7 @@ public class K5zStructureViewElement implements StructureViewTreeElement, Sortab
                 treeElements.add(new K5zStructureViewElement(element));
             }
 
-            return treeElements.toArray(new TreeElement[treeElements.size()]);
+            return treeElements.toArray(new TreeElement[0]);
         }
         return EMPTY_ARRAY;
     }
@@ -144,7 +145,7 @@ public class K5zStructureViewElement implements StructureViewTreeElement, Sortab
         else {
             K5zStructureViewElement that = (K5zStructureViewElement) o;
 
-            result = !(element != null ? !element.equals(that.element) : that.element != null);
+            result = Objects.equals(element, that.element);
         }
 
         return result;

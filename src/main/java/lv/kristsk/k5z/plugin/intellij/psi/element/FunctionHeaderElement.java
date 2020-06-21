@@ -31,6 +31,7 @@ package lv.kristsk.k5z.plugin.intellij.psi.element;
 
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
+import com.intellij.navigation.NavigationItem;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.PsiTreeUtil;
 import lv.kristsk.k5z.plugin.intellij.K5zIcons;
@@ -39,7 +40,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
-public class FunctionHeaderElement extends K5zPsiElement {
+public class FunctionHeaderElement extends K5zPsiElement implements NavigationItem {
 
     public static class Factory implements PsiElementFactory {
 
@@ -55,6 +56,13 @@ public class FunctionHeaderElement extends K5zPsiElement {
     public FunctionHeaderElement(@NotNull ASTNode node) {
 
         super(node);
+    }
+
+    public String getName() {
+
+        FunctionHeaderNameElement nameElement = PsiTreeUtil.getChildOfType(this, FunctionHeaderNameElement.class);
+        assert nameElement != null;
+        return nameElement.getName();
     }
 
     @Override

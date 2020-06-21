@@ -84,13 +84,17 @@ public class K5zStructureViewModel extends TextEditorBasedStructureViewModel imp
         return value instanceof FunctionHeaderElement;
     }
 
+    @SuppressWarnings("rawtypes")
+    private static final Class[] SUITABLE_CLASSES = new Class[]{
+        K5zFileElement.class,
+        PhtmlIncludeElement.class,
+        FunctionDeclarationElement.class,
+    };
+
+    @SuppressWarnings("rawtypes")
     @NotNull
     protected Class[] getSuitableClasses() {
 
-        return new Class[]{
-            K5zFileElement.class,
-            PhtmlIncludeElement.class,
-            FunctionDeclarationElement.class,
-        };
+        return SUITABLE_CLASSES;
     }
 }

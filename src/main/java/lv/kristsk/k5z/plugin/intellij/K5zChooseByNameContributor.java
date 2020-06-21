@@ -70,19 +70,21 @@ public class K5zChooseByNameContributor implements ChooseByNameContributor {
     @Override
     public NavigationItem[] getItemsByName(String name, String pattern, Project project, boolean includeNonProjectItems) {
 
-        List<FunctionHeaderElement> functionHeaderElements = new ArrayList<>();
+        List<NavigationItem> functionHeaderNavigationItems = new ArrayList<>();
 
-        for (FunctionHeaderElement element : getFunctionHeaderElements(project)) {
+        for (NavigationItem navigationItem : getFunctionHeaderElements(project)) {
 
-            ItemPresentation presentation = element.getPresentation();
+            ItemPresentation presentation = navigationItem.getPresentation();
 
             if (presentation != null && name.equals(presentation.getPresentableText())) {
 
-                functionHeaderElements.add(element);
+                functionHeaderNavigationItems.add(navigationItem);
             }
         }
 
-        return functionHeaderElements.toArray(new NavigationItem[0]);
+        System.out.println("getItemsByName(" + name + ", " + pattern + "): " + functionHeaderNavigationItems.size());
+
+        return functionHeaderNavigationItems.toArray(NavigationItem.EMPTY_NAVIGATION_ITEM_ARRAY);
     }
 
     private List<FunctionHeaderElement> getFunctionHeaderElements(Project project) {
