@@ -14,8 +14,8 @@ wrapper {
     gradleVersion = '5.2.1'
 }
 
-group 'lv.kristsk.gen5'
-version '0.5'
+group 'k5z'
+version pluginVersion
 
 compileJava {
     sourceCompatibility = '1.8'
@@ -23,11 +23,11 @@ compileJava {
 }
 
 intellij {
-    pluginName 'k5z-intellij-2020'
-    version = '2020.1'
+    version = "$ideaVersion"
     plugins 'java'
+    pluginName 'k5z-intellij-2020'
     downloadSources = true
-    sameSinceUntilBuild = true
+    sameSinceUntilBuild = false
 }
 
 repositories {
@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    antlr('org.antlr:antlr4:4.7.2') { // use ANTLR version 4
+    antlr("org.antlr:antlr4:$antlr4Version") { // use ANTLR version 4
         exclude group: 'com.ibm.icu', module: 'icu4j'
     }
     implementation 'org.antlr:antlr4-intellij-adaptor:0.1'

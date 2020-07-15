@@ -82,8 +82,6 @@ public class K5zChooseByNameContributor implements ChooseByNameContributor {
             }
         }
 
-        System.out.println("getItemsByName(" + name + ", " + pattern + "): " + functionHeaderNavigationItems.size());
-
         return functionHeaderNavigationItems.toArray(NavigationItem.EMPTY_NAVIGATION_ITEM_ARRAY);
     }
 

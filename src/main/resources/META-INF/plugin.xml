@@ -2,12 +2,26 @@
     <id>lv.kristsk.k5z.plugin.intellij</id>
     <name>K5Z</name>
     <version>0.1</version>
-    <vendor email="k@pods.lv">K5Z plugin for IntelliJ IDEA</vendor>
+    <vendor email="k@pods.lv">K5Z plugin for Jetbrains IDEs</vendor>
 
-    <idea-version since-build="201"/>
+    <description>K5Z language plugin. Supports syntax check and highlighting</description>
 
-    <depends>com.intellij.modules.lang</depends>
+<!--    <idea-version since-build="201"/>-->
+
+<!--    <depends>com.intellij</depends>-->
+    <depends>com.intellij.modules.platform</depends>
+<!--    <depends>com.intellij.modules.lang</depends>-->
     <depends>com.intellij.modules.java</depends>
+
+    <idea-version since-build="201.1174"/> <!-- requires 13.x, 14.x, 15.x -->
+
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products -->
+    <depends>com.intellij.modules.lang</depends>
+
+    <application-components>
+    </application-components>
 
     <actions>
     </actions>
@@ -45,6 +59,9 @@
                 language="K5Z"
                 implementationClass="lv.kristsk.k5z.plugin.intellij.K5zFoldingBuilder"/>
 
+        <readWriteAccessDetector
+                implementation="lv.kristsk.k5z.plugin.intellij.K5zReadWriteAccessDetector"/>
+
         <gotoSymbolContributor
                 implementation="lv.kristsk.k5z.plugin.intellij.K5zChooseByNameContributor"/>
 
@@ -52,8 +69,14 @@
 
         <!--        <externalAnnotator language="Sample" implementationClass="org.antlr.jetbrains.sample.SampleExternalAnnotator"/>-->
 
-        <!--        <lang.findUsagesProvider language="Sample"-->
-        <!--                                 implementationClass="org.antlr.jetbrains.sample.SampleFindUsagesProvider"/>-->
+        <completion.contributor
+                language="K5Z"
+                implementationClass="lv.kristsk.k5z.plugin.intellij.completion.K5zCompletionContributor"
+                id="k5zBasicCompletion"/>
+
+        <lang.findUsagesProvider
+                language="K5Z"
+                implementationClass="lv.kristsk.k5z.plugin.intellij.K5zFindUsagesProvider"/>
 
         <sdkType
                 implementation="lv.kristsk.k5z.plugin.intellij.K5zSdkType"/>
@@ -61,5 +84,10 @@
         <moduleType
                 id="K5Z_MODULE"
                 implementationClass="lv.kristsk.k5z.plugin.intellij.K5zModuleType"/>
+
+        <iconProvider implementation="lv.kristsk.k5z.plugin.intellij.K5zIconProvider"/>
+
+        <lang.commenter language="K5Z" implementationClass="lv.kristsk.k5z.plugin.intellij.K5zCommenter"/>
+
     </extensions>
 </idea-plugin>

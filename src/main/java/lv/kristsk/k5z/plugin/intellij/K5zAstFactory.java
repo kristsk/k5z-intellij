@@ -56,6 +56,7 @@ public class K5zAstFactory extends DefaultASTFactoryImpl {
 
         factories.put(ruleTypes.get(K5zParser.RULE_k5zFile), K5zFileElement.Factory.INSTANCE);
         factories.put(ruleTypes.get(K5zParser.RULE_header), HeaderElement.Factory.INSTANCE);
+        factories.put(ruleTypes.get(K5zParser.RULE_functionDeclarations), FunctionDeclarationsElement.Factory.INSTANCE);
         factories.put(ruleTypes.get(K5zParser.RULE_functionDeclaration), FunctionDeclarationElement.Factory.INSTANCE);
         factories.put(ruleTypes.get(K5zParser.RULE_functionIdentifier), FunctionIdentifierElement.Factory.INSTANCE);
         factories.put(ruleTypes.get(K5zParser.RULE_phtmlIncludeLine), PhtmlIncludeElement.Factory.INSTANCE);
@@ -96,7 +97,7 @@ public class K5zAstFactory extends DefaultASTFactoryImpl {
         PsiElement psiElement;
         IElementType tokenType = node.getElementType();
 
-        System.out.println("createInternalParseTreeNode: " + tokenType);
+//        System.out.println("createInternalParseTreeNode: " + tokenType);
 
         PsiElementFactory factory = factories.get(tokenType);
         if (factory != null) {
