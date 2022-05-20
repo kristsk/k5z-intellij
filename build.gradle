@@ -18,16 +18,21 @@ group 'k5z'
 version pluginVersion
 
 compileJava {
-    sourceCompatibility = '1.8'
-    targetCompatibility = '1.8'
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
 }
 
 intellij {
+    type = "IU"
     version = "$ideaVersion"
     plugins 'java'
     pluginName 'k5z-intellij-2020'
-    downloadSources = true
+    downloadSources = false
     sameSinceUntilBuild = false
+}
+
+tasks.buildSearchableOptions {
+    enabled = false
 }
 
 repositories {

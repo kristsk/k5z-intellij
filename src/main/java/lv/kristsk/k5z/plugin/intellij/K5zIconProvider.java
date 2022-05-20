@@ -12,9 +12,7 @@ import javax.swing.*;
 public class K5zIconProvider extends IconProvider {
 
     public Icon getIcon(@NotNull PsiElement psiElement, int flags) {
-
-        System.out.println("Looking for icon for: " + psiElement);
-
+    
         if (psiElement instanceof VariableElement) {
             return AllIcons.Nodes.Variable;
         }

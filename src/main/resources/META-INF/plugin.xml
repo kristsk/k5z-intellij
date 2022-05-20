@@ -2,11 +2,9 @@
     <id>lv.kristsk.k5z.plugin.intellij</id>
     <name>K5Z</name>
     <version>0.1</version>
-    <vendor email="k@pods.lv">K5Z plugin for Jetbrains IDEs</vendor>
+    <vendor email="k@pods.lv">K5Z language plugin for Jetbrains IDEs</vendor>
 
     <description>K5Z language plugin. Supports syntax check and highlighting</description>
-
-<!--    <idea-version since-build="201"/>-->
 
 <!--    <depends>com.intellij</depends>-->
     <depends>com.intellij.modules.platform</depends>
